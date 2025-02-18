@@ -1,36 +1,5 @@
 package Spring_Security_JWT.auth.controllers;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-
 import Spring_Security_JWT.auth.OTP.util.AccountValidationUtil;
 import Spring_Security_JWT.auth.OTP.util.EmailUtil;
 import Spring_Security_JWT.auth.OTP.util.OtpUtil;
@@ -55,6 +24,35 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -312,49 +310,7 @@ public class AuthController {
                 .ok(new MessageResponse("Mã OTP đã được cập nhật. Vui lòng xác minh tài khoản trong vòng 1 phút."));
     }
 
-    // // profile
-    // @PutMapping("/{id}")
-    // public ResponseEntity<?> updateAccount(@PathVariable String id, @Valid
-    // @RequestBody UserDto userDto) {
-    // Optional<Account> existingAccountOpt =
-    // accountDAO.findById(id);
-    // if (!existingAccountOpt.isPresent()) {
-    // return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tài khoản không được
-    // tìm thấy");
-    // }
-    // Account existingAccount = existingAccountOpt.get();
-    // if (!existingAccount.getPhone().equals(userDto.getPhone()) &&
-    // accountDAO.existsByPhone(userDto.getPhone())) {
-    // return ResponseEntity
-    // .badRequest()
-    // .body(new MessageResponse("Số điện thoai đã được sử dụng!"));
-    // }
-    // if (!existingAccount.getEmail().equals(userDto.getEmail()) &&
-    // accountDAO.existsByEmail(userDto.getEmail())) {
-    // return ResponseEntity
-    // .badRequest()
-    // .body(new MessageResponse("Email đã được sử dụng!"));
-    // }
-    // existingAccount.setPhone(userDto.getPhone());
-    // existingAccount.setFullname(userDto.getFullname());
-    // existingAccount.setEmail(userDto.getEmail());
-    // existingAccount.setAddress(userDto.getAddress());
-    // existingAccount.setBirthday(userDto.getBirthday());
-    // existingAccount.setGender(userDto.getGender());
-    // existingAccount.setImage(userDto.getImage());
-    // Account updatedAccount = accountDAO.save(existingAccount);
-    // UserDto responseDto = new UserDto(
-    // updatedAccount.getId(),
-    // updatedAccount.getPhone(),
-    // updatedAccount.getFullname(),
-    // updatedAccount.getEmail(),
-    // updatedAccount.getAddress(),
-    // updatedAccount.getBirthday(),
-    // updatedAccount.getGender(),
-    // updatedAccount.getImage());
-    // return ResponseEntity.ok(responseDto);
-    // }
-    // Gửi email quên mật khẩu
+   
     
     
     @PutMapping("/forgot-password")
