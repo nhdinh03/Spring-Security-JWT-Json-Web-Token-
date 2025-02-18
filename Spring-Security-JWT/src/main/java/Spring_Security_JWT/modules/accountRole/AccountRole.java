@@ -2,8 +2,7 @@ package Spring_Security_JWT.modules.accountRole;
 
 
 
-import javax.management.relation.Role;
-
+import Spring_Security_JWT.auth.models.SecurityRole;
 import Spring_Security_JWT.modules.account.Account;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -33,7 +32,7 @@ public class AccountRole {
     @ManyToOne
     @MapsId("roleId") // Ánh xạ với role_id trong AccountRolePK
     @JoinColumn(name = "role_id")
-    private Role role;
+    private SecurityRole role;
 
 
 }

@@ -60,14 +60,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ Bật CORS đúng cách
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/api/**", "/api/auth/regenerate-otp/**", "/users/me/**", "/api/upload/**",
-                            "/api/productimages/**", "/api/lockreasons/**", "/api/cancelreason/**").permitAll();
-
+                    auth.requestMatchers("/api/**").permitAll();
                     auth.requestMatchers("/test/test/**").permitAll();
                     auth.anyRequest().authenticated();
                 });
